@@ -1,0 +1,12 @@
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\bin\Debug\netcoreapp3.0\HttpRequester.exe
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\bin\Debug\netcoreapp3.0\HttpRequester.deps.json
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\bin\Debug\netcoreapp3.0\HttpRequester.runtimeconfig.json
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\bin\Debug\netcoreapp3.0\HttpRequester.runtimeconfig.dev.json
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\bin\Debug\netcoreapp3.0\HttpRequester.dll
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\bin\Debug\netcoreapp3.0\HttpRequester.pdb
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\obj\Debug\netcoreapp3.0\HttpRequester.csprojAssemblyReference.cache
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\obj\Debug\netcoreapp3.0\HttpRequester.AssemblyInfoInputs.cache
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\obj\Debug\netcoreapp3.0\HttpRequester.AssemblyInfo.cs
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\obj\Debug\netcoreapp3.0\HttpRequester.dll
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\obj\Debug\netcoreapp3.0\HttpRequester.pdb
+C:\Users\Acer\source\repos\C# WEB BASICS\Web Server - HTTP Protocol\HttpRequester\HttpRequester\bin\Debug\netcoreapp3.0\istock-1069317442.jpg
