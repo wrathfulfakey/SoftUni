@@ -14,3 +14,4 @@ C:\Users\Acer\Documents\GitHub\SoftUni\SIS\DemoApp\bin\Debug\netcoreapp3.1\SIS.H
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\DemoApp\obj\Debug\netcoreapp3.1\DemoApp.csproj.CopyComplete
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\DemoApp\obj\Debug\netcoreapp3.1\DemoApp.dll
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\DemoApp\obj\Debug\netcoreapp3.1\DemoApp.pdb
+C:\Users\Acer\Documents\GitHub\SoftUni\SIS\DemoApp\bin\Debug\netcoreapp3.1\wwwroot\favicon.ico

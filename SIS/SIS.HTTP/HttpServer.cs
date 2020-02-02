@@ -13,12 +13,14 @@
     {
         private readonly TcpListener tcpListener;
         private readonly IList<Route> routeTable;
+        private readonly IDictionary<string, IDictionary<string, string>> sessions;
 
         //TODO: Actions
         public HttpServer(int port, IList<Route> routeTable)
         {
             this.tcpListener = new TcpListener(IPAddress.Loopback, port);
             this.routeTable = routeTable;
+            this.sessions = new Dictionary<string, IDictionary<string, string>>();
         }
 
         public async Task ResetAsync()
@@ -51,12 +53,28 @@
 
             try
             {
-
                 byte[] requestBytes = new byte[1000000]; //TODO: Use buffer
                 int bytesRead = await networkStream.ReadAsync(requestBytes, 0, requestBytes.Length);
                 string requestAsString = Encoding.UTF8.GetString(requestBytes, 0, bytesRead);
 
                 var request = new HttpRequest(requestAsString);
+                var sessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionIdCookieName);
+                string newSessionId = null;
+
+                if (sessionCookie != null && this.sessions.ContainsKey(sessionCookie.Value))
+                {
+                    request.SessionData = this.sessions[sessionCookie.Value];
+                }
+                else
+                {
+                    newSessionId = Guid.NewGuid().ToString();
+                    var dictionary = new Dictionary<string, string>();
+                    this.sessions.Add(newSessionId, dictionary);
+                    request.SessionData = dictionary;
+                }
+
+                Console.WriteLine($"{request.Method} {request.Path}");
+
                 var route = this.routeTable.FirstOrDefault(
                     x => x.HttpMethod == request.Method
                     && x.Path == request.Path);
@@ -72,17 +90,18 @@
                 }
 
                 response.Headers.Add(new Header("Server", "SoftUniServer/1.0"));
-                response.Cookies.Add(
-                    new ResponseCookie("sid", Guid.NewGuid().ToString())
-                    { HttpOnly = true, MaxAge = 3600 });
+
+                if (newSessionId != null)
+                {
+                    response.Cookies.Add(
+                        new ResponseCookie(HttpConstants.SessionIdCookieName, newSessionId)
+                        { HttpOnly = true, MaxAge = 30*3600 });
+                }
 
                 byte[] responseBytes = Encoding.UTF8.GetBytes(response.ToString());
 
                 await networkStream.WriteAsync(responseBytes, 0, responseBytes.Length);
                 await networkStream.WriteAsync(response.Body, 0, response.Body.Length);
-
-                Console.WriteLine(requestAsString);
-                Console.WriteLine(new string('=', 60));
             }
             catch (Exception ex)
             {
