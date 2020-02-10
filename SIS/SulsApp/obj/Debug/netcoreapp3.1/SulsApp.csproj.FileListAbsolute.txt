@@ -83,3 +83,4 @@ C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\zh-Ha
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\wwwroot\css\reset.css
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\wwwroot\favicon.ico
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\wwwroot\img\cat.jpg
+C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\Views\Shared\Error.html

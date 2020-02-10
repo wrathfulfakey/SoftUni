@@ -46,6 +46,7 @@
                 var methods = type.GetMethods()
                     .Where(x => !x.IsSpecialName
                         && !x.IsConstructor
+                        && x.IsPublic
                         && x.DeclaringType == type);
 
                 foreach (var method in methods)
