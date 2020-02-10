@@ -15,7 +15,6 @@
         private readonly IList<Route> routeTable;
         private readonly IDictionary<string, IDictionary<string, string>> sessions;
 
-        //TODO: Actions
         public HttpServer(int port, IList<Route> routeTable)
         {
             this.tcpListener = new TcpListener(IPAddress.Loopback, port);
@@ -47,6 +46,11 @@
             this.tcpListener.Stop();
         }
 
+        /// <summary>
+        /// Proccess the <see cref="TcpClient"/> asynchronously and returns Http
+        /// </summary>
+        /// <param name="tcpClient">TcpClient</param>
+        /// <returns></returns>
         private async Task ProcessClientAsync(TcpClient tcpClient)
         {
             using NetworkStream networkStream = tcpClient.GetStream();
@@ -77,7 +81,7 @@
 
                 var route = this.routeTable.FirstOrDefault(
                     x => x.HttpMethod == request.Method
-                    && x.Path == request.Path);
+                    && string.Compare(x.Path, request.Path, true) == 0);
 
                 HttpResponse response;
                 if (route == null)
