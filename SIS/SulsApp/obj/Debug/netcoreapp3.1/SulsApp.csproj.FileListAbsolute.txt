@@ -84,3 +84,7 @@ C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\wwwro
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\wwwroot\favicon.ico
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\wwwroot\img\cat.jpg
 C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\Views\Shared\Error.html
+C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\Views\Problems\Create.html
+C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\Views\Problems\Details.html
+C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\Views\Home\IndexLoggedIn.html
+C:\Users\Acer\Documents\GitHub\SoftUni\SIS\SulsApp\bin\Debug\netcoreapp3.1\Views\Submissions\Create.html

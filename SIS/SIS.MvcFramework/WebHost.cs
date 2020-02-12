@@ -71,21 +71,60 @@
                         }
                     }
 
-                    routeTable.Add(new Route(httpActionType, url, (request) => 
+                    routeTable.Add(new Route(httpActionType, url, (request) =>
                         InvokeAction(request, serviceCollection, controller, action)
                     ));
                 }
             }
         }
 
-        private static HttpResponse InvokeAction(HttpRequest request,IServiceCollection serviceCollection, Type controllerType, MethodInfo actionMethod)
+        private static HttpResponse InvokeAction(HttpRequest request, IServiceCollection serviceCollection, Type controllerType, MethodInfo actionMethod)
         {
             var controller = serviceCollection.CreateInstance(controllerType) as Controller;
             controller.Request = request;
 
-            var response = actionMethod.Invoke(controller, new object[] { }) as HttpResponse;
+            var actionParameterValues = new List<object>();
+            var actionParameters = actionMethod.GetParameters();
+
+            foreach (var parameter in actionParameters)
+            {
+                object value = Convert.ChangeType
+                    (GetValueFromRequest(request, parameter.Name),
+                    parameter.ParameterType);
+                if (value == null)
+                {
+                    var parameterValue = serviceCollection.CreateInstance(parameter.ParameterType);
+
+                    foreach (var property in parameter.ParameterType.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+                    {
+                        var propertyValue = GetValueFromRequest(request, property.Name);
+                        property.SetValue(parameterValue, Convert.ChangeType(propertyValue, property.PropertyType));
+                    }
+
+                    actionParameterValues.Add(parameterValue);
+                }
+            }
+
+            var response = actionMethod.Invoke(controller, actionParameterValues.ToArray()) as HttpResponse;
 
             return response;
+        }
+
+        private static object GetValueFromRequest(HttpRequest request, string parameterName)
+        {
+            parameterName = parameterName.ToLower();
+
+            object value = null;
+            if (request.QueryData.Any(x => x.Key.ToLower() == parameterName))
+            {
+                value = request.QueryData.FirstOrDefault(x => x.Key.ToLower() == parameterName).Value;
+            }
+            else if (request.FormData.Any(x => x.Key.ToLower() == parameterName))
+            {
+                value = request.FormData.FirstOrDefault(x => x.Key.ToLower() == parameterName).Value;
+            }
+
+            return value;
         }
 
         private static void AutoRegisterStaticFilesRoute(IList<Route> routeTable)

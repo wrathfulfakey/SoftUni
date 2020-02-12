@@ -21,6 +21,11 @@
             return this.ViewByName<T>(viewPath, viewModel);
         }
 
+        protected bool IsUserLoggedIn()
+        {
+            return this.User != null;
+        }
+
         protected HttpResponse View([CallerMemberName] string viewName = null)
         {
             return this.View<object>(null, viewName);

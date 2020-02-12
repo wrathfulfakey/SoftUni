@@ -5,8 +5,7 @@
     using SIS.HTTP;
     using SIS.HTTP.Logging;
     using SIS.MvcFramework;
-
-    using SulsApp.ViewModels;
+    using SulsApp.ViewModels.Home;
 
     public class HomeController : Controller
     {
@@ -20,8 +19,8 @@
         [HttpGet("/")]
         public HttpResponse Index()
         {
+            var request = this.Request;
             this.logger.Log("Hello from Index");
-
             var viewModel = new IndexViewModel()
             {
                 Message = "Welcome to SULS Platform!",
