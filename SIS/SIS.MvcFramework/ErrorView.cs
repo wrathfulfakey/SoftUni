@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SIS.MvcFramework
+﻿namespace SIS.MvcFramework
 {
+    using System.Collections.Generic;
+    using System.Text;
+
     public class ErrorView : IView
     {
         private readonly IEnumerable<string> errors;
@@ -13,7 +12,7 @@ namespace SIS.MvcFramework
             this.errors = errors;
         }
 
-        public string GetHtml(object model)
+        public string GetHtml(object model, string user)
         {
             StringBuilder html = new StringBuilder();
             html.AppendLine("<h1>View compilation errors:</h1>");

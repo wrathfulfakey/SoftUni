@@ -1,18 +1,25 @@
 ﻿namespace SulsApp.Controllers
 {
     using System;
-    using System.IO;
     using System.Net.Mail;
-    using System.Security.Cryptography;
-    using System.Text;
+
     using SIS.HTTP;
-    using SIS.HTTP.Response;
+    using SIS.HTTP.Logging;
     using SIS.MvcFramework;
 
-    using SulsApp.Models;
+    using SulsApp.Services;
 
     public class UsersController : Controller
     {
+        private IUsersService usersService;
+        private ILogger logger;
+
+        public UsersController(IUsersService usersService, ILogger logger)
+        {
+            this.usersService = usersService;
+            this.logger = logger;
+        }
+
         public HttpResponse Login()
         {
             return this.View();
@@ -21,7 +28,19 @@
         [HttpPost("/Users/Login")]
         public HttpResponse DoLogin()
         {
-            return this.View();
+            var username = this.Request.FormData["username"];
+            var password = this.Request.FormData["password"];
+
+            var userId = this.usersService.GetUserId(username, password);
+            if (userId == null)
+            {
+                return this.Redirect("/Users/Login");
+            }
+
+            this.SignIn(userId);
+            this.logger.Log("User logged in: " + username);
+
+            return this.Redirect("/");
         }
 
         public HttpResponse Register()
@@ -57,19 +76,14 @@
                 return this.Error("Invalid email.");
             }
 
-            var user = new User
-            {
-                Username = username,
-                Email = email,
-                Password = this.Hash(password)
-            };
+            this.usersService.CreateUser(username, email, password);
+            this.logger.Log("New user: " + username);
+            return this.Redirect("/Users/Login");
+        }
 
-            var db = new ApplicationDbContext();
-            db.Users.Add(user);
-            db.SaveChanges();
-
-            // TODO: Log In...
-
+        public HttpResponse Logout()
+        {
+            this.SignOut();
             return this.Redirect("/");
         }
 
