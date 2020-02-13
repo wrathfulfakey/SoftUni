@@ -20,7 +20,7 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public string Problemid { get; set; }
+        public string ProblemId { get; set; }
         public virtual Problem Problem { get; set; }
 
         public string UserId { get; set; }

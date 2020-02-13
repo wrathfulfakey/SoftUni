@@ -91,9 +91,9 @@
                 object value = Convert.ChangeType
                     (GetValueFromRequest(request, parameter.Name),
                     parameter.ParameterType);
-                if (value == null)
+                if (value == null && parameter.ParameterType != typeof(string))
                 {
-                    var parameterValue = serviceCollection.CreateInstance(parameter.ParameterType);
+                    var parameterValue = Activator.CreateInstance(parameter.ParameterType);
 
                     foreach (var property in parameter.ParameterType.GetProperties(BindingFlags.Public | BindingFlags.Instance))
                     {
@@ -102,6 +102,10 @@
                     }
 
                     actionParameterValues.Add(parameterValue);
+                }
+                else
+                {
+                    actionParameterValues.Add(value);
                 }
             }
 

@@ -12,6 +12,7 @@
         {
             serviceCollection.Add<IUsersService, UsersService>();
             serviceCollection.Add<IProblemsService, ProblemsService>();
+            serviceCollection.Add<ISubmissionsService, SubmissionService>();
         }
 
         public void Configure(IList<Route> routeTable)
