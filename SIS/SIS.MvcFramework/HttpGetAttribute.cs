@@ -3,6 +3,7 @@
     using SIS.HTTP;
     using System;
 
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class HttpGetAttribute : HttpMethodAttribute
     {
         public HttpGetAttribute()
