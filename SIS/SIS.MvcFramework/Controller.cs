@@ -41,6 +41,11 @@
             return new RedirectResponse(url);
         }
 
+        protected HttpResponse NotFound()
+        {
+            return new StatusCodeResponse(HttpResponseCode.NotFound);
+        }
+
         private HttpResponse ViewByName<T>(string viewPath, object viewModel)
         {
             IViewEngine viewEngine = new ViewEngine();

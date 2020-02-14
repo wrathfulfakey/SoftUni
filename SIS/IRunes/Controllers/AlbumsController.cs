@@ -23,7 +23,11 @@
 
             var viewModel = new AllAlbumsViewModel
             {
-                Albums = this.albumsService.GetAll()
+                Albums = this.albumsService.GetAll(x => new AlbumInfoViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                })
             };
 
             return this.View(viewModel);
@@ -60,9 +64,16 @@
             return this.Redirect("/Albums/All");
         }
         
-        public HttpResponse Details()
+        public HttpResponse Details(string id)
         {
-            return this.View();
+            if (!this.IsUserLoggedIn())
+            {
+                return this.Redirect("/Users/Login");
+            }
+
+            var viewModel = this.albumsService.GetDetails(id);
+
+            return this.View(viewModel);
         }
     }
 }
