@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SulsApp", "SulsApp\SulsApp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SIS.MvcFramework.Tests", "SIS.MvcFramework.Tests\SIS.MvcFramework.Tests.csproj", "{B605C659-7F85-4E6C-B13B-591E3077A1BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRunes", "IRunes\IRunes.csproj", "{016F32DF-C20A-4E75-B5C7-1136ACD6D769}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IRunes", "IRunes\IRunes.csproj", "{016F32DF-C20A-4E75-B5C7-1136ACD6D769}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andreys", "Andreys\Andreys.csproj", "{B7BB2456-9AFB-4D71-A99A-4715FB3925E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{016F32DF-C20A-4E75-B5C7-1136ACD6D769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{016F32DF-C20A-4E75-B5C7-1136ACD6D769}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{016F32DF-C20A-4E75-B5C7-1136ACD6D769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7BB2456-9AFB-4D71-A99A-4715FB3925E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7BB2456-9AFB-4D71-A99A-4715FB3925E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7BB2456-9AFB-4D71-A99A-4715FB3925E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7BB2456-9AFB-4D71-A99A-4715FB3925E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
