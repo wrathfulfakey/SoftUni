@@ -6,7 +6,6 @@
     {
         public T Id { get; set; }
 
-        [MaxLength(10)]
         [Required]
         public string Username { get; set; }
 
